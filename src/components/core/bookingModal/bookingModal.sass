@@ -1,0 +1,51 @@
+.overlay-booking
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.4)
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 10
+    .modal-booking
+        background: white
+        padding: 20px 15px
+        border-radius: 5px
+        display: flex
+        flex-direction: column
+        text-align: center
+        width: 420px
+        @media screen and ( max-width: 500px  )
+            width: 320px
+        &>p
+            font-size: 1.4rem
+        form
+            padding: 10px 15px 
+            display: flex
+            flex-direction: column
+            &>input:nth-child(-n+3)
+                padding: 10px
+                border: solid 1px rgba(0,0,0,0.1)
+                border-radius: 5px
+                background: rgba(0, 0, 0, 0.02)
+                font-size: 1.1rem
+            .btn
+                color: white
+                background-color: rgba(var(--red),1)
+                font-size: 1.1rem
+                border: solid 3px rgba(var(--red),1)
+                transition: all 0.4s
+                &:hover
+                    color: rgba(var(--red),1)
+                    background: white
+            .checkbox
+                display: flex
+                flex-direction: row
+                align-items: center
+                text-align: left
+                &>*:first-child
+                    margin-right: 7px
+            &>*
+                margin: 5px 0

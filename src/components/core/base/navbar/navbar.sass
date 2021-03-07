@@ -1,0 +1,67 @@
+.navbar
+    position: fixed
+    width: 100%
+    margin: auto
+    z-index: 10
+    transition: background-color 0.5s
+    &.darken
+        background-color: rgba(var(--dark-main), 0.85)
+    .container
+        width: 100%
+        display: flex 
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        padding: 20px       
+        position: relative 
+        .contacts
+            display: flex
+            flex-direction: row
+            list-style: none
+            a,p
+                color: white
+                font-size: 2.6rem
+                line-height: 2.6rem
+                padding-left: 30px
+            p
+                animation: slidein 0.3s
+                @keyframes slidein 
+                    from 
+                        opacity: 0
+                    to 
+                        opacity: 1
+        .mobile-menu
+            height: 35px
+            width: 35px
+            cursor: pointer
+            position: relative
+            display: none
+            &-line
+                height: 3px
+                width: inherit
+                background: white
+                &::after
+                    content: ''
+                    height: 3px
+                    width: 35px
+                    position: absolute
+                    top: 14px
+                    background: white
+                &::before
+                    content: ''
+                    height: 3px
+                    width: 35px
+                    position: absolute
+                    top: 28px
+                    background: white
+
+        @media screen and ( max-width: 500px )
+            .nav-logo
+                display: none
+            .mobile-menu
+                display: block
+            .contacts                
+                opacity: 0
+                transition: opacity 0.2s
+                &.shown
+                    opacity: 1

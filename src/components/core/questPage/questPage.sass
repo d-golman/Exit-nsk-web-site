@@ -1,0 +1,151 @@
+.quest    
+    &-header
+        flex: 1
+        height: auto
+        padding-top: 95px
+        position: relative
+        &-name
+            width: 100%
+            height: auto
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-between
+            padding: 0 15px
+            max-width: 980px
+            margin: auto
+            h1
+                padding: 10px 0
+                text-align: left
+                color: black
+                font-weight: 900
+                font-size: 3rem
+            .back
+                padding-right: 15px 
+                color: black
+                font-size: 3rem
+            @media screen and ( max-width: 700px )
+                h1
+                    max-width: 85%
+            @media screen and ( max-width: 500px )
+                h1
+                    text-align: left
+                .back
+                    top: 5%
+                    font-size: 2.5rem
+                    padding-right: 18px
+            @media screen and ( max-width: 350px )
+                h1
+                    max-width: 80%
+                    
+        img
+            width: 100%
+            z-index: -5
+            min-height: 700px
+            max-height: 700px
+            object-fit: cover
+            object-position: center    
+        &-info
+            position: absolute        
+            background: rgba(var(--dark-main),0.7)
+            width: 100%
+            height: auto
+            bottom: 0
+            padding: 50px 0
+            .container
+                max-width: 1000px
+                padding: 0 25px
+                display: flex
+                justify-content: space-between
+                align-items: center
+                flex-direction: row
+                text-align: center            
+                &>*:nth-child(1n)
+                    &>*:first-child
+                        display: block
+                        padding-bottom: 10px
+                    p,a
+                        font-size: 1.2rem
+                a,p,i
+                    color: white
+                    text-decoration: none
+                .icon
+                    font-size: 2.5rem !important
+                    line-height: 2.5rem
+                .people
+                    span
+                        color: white
+                        font-size: 1.2rem
+                    .man
+                        font-size: 2rem
+                        padding: 5px 3px
+                        &-white
+                            opacity: 1
+                        &-grey
+                            opacity: 0.5
+                .book
+                    i
+                        color: rgba(var(--red),1) !important
+                @media screen and ( max-width: 400px )
+                    &>*:nth-child(1n)
+                        &>*:first-child
+                            display: block
+                            padding-bottom: 10px
+                        p,a
+                            font-size: 0.9rem
+                    a,p,i
+                        color: white
+                        text-decoration: none
+                    .icon
+                        font-size: 2rem !important
+                        line-height: 2rem
+                    .people
+                        .man
+                            font-size: 1.5rem
+
+                    
+        @media screen and ( max-width: 500px  )
+            padding-top: 80px
+            h1
+                font-size: 1.8rem
+                padding: 10px 0
+            img
+                height: 300px
+    &-about
+        background: rgba(var(--dark-main),0.95)
+        color: white
+        padding: 20px 15px
+        .container
+            max-width: 1000px
+            display: flex
+            flex-direction: row
+            justify-content: space-between    
+            flex-wrap: wrap
+            &>*:nth-child(1n)
+                padding: 20px        
+            .description
+                flex: 1
+            .contacts
+                width: 240px
+            .toggle
+                display: inline
+                padding-right: 15px
+                color: rgba(255,255,255, 0.6 )
+                cursor: pointer
+                &.active
+                    color: white
+            h3
+                font-size: 2rem
+                padding-bottom: 1rem
+            p
+                font-size: 1.4rem
+                white-space: pre-wrap      
+            @media screen and ( max-width: 800px  )
+                flex-direction: column
+
+#booking
+    .container.quest-page
+        max-width: 1020px
+        padding: 30px
+        &>h2
+            font-size: 2rem

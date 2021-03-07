@@ -1,0 +1,67 @@
+$dark-main: 22, 22 , 22
+$red: 251, 67, 0
+$blue: 60, 60, 220
+$darkest: '0,0,0'
+
+\:root
+	--dark-main: #{$dark-main}
+	--red: #{$red}
+	--blue: #{$blue}
+	--darkest: #{$darkest}
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+html   
+    scroll-behavior: smooth
+
+body 
+	margin: 0
+	font-family: 'Open Sans Condensed', sans-serif
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+.container
+	max-width: 1600px
+	margin: auto
+
+.btn
+	border: none
+	padding: 13px
+	font-size: 15px
+	border-radius: 5px
+	display: inline-block
+	text-align: center
+	text-decoration: none
+	cursor: pointer
+	transition: background-color 0.2s
+	&-dark
+		background: #333
+		color: white
+		&:hover
+			background: #4F4F4F			
+	&-light
+		background: #4F4F4F
+		color: white
+		&:hover
+			background: #777	
+	&-black
+		background: #000
+		color: white
+		&:hover
+			background: #333	
+
+.a-btn
+	text-decoration: none
+	cursor: pointer
+	&-white
+		color: white
+		transition: color 0.3s 
+		&:hover
+			color: #c8c8c8 !important
+
+.error
+	text-align:  center
+	height: 100%

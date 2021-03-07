@@ -1,0 +1,68 @@
+.main-header
+    min-height: 100vh
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+    color: white
+    padding: 20px
+    .background
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: url(../../img/header-bg.jfif) no-repeat center center/cover
+        background-attachment: fixed
+        z-index: -10
+        &::after
+            content: ''
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            z-index: -9
+            background: rgba(var(--darkest), 0.5)
+    .header-data
+        max-width: 1000px
+        margin-top: 15% 
+        h1
+            font-size: 7rem
+            padding-bottom: 2rem
+            letter-spacing: 0.6rem
+            @media screen and ( max-width: 500px  )
+                font-size: 6rem
+            span
+                font-size: 9rem
+        p
+            font-size: 1.8rem
+        
+    .header-links
+        margin-top: 80px 
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: row
+        flex-wrap: wrap
+        .item
+            cursor: pointer
+            width: 160px
+            padding: 0 15px
+            text-decoration: none
+            img
+                width: 100%
+            P
+                color: white
+                font-size: 1.6rem
+            @media screen and ( max-width: 500px )
+                width: 150px
+                p
+                    font-size: 1.2rem
+            @media screen and ( max-width: 360px )
+                width: 140px
+                p
+                    font-size: 1.1rem
+    

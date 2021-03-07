@@ -1,0 +1,49 @@
+#booking
+    padding-bottom: 40px
+    &>h2
+        text-align: center
+        font-size: 3rem
+        padding-bottom: 20px
+    .container    
+        max-width: 900px
+        padding: 10px
+        .date-input
+            padding: 10px
+            margin: 5px
+            font-size: 1.3rem
+            border: solid 1px
+            background: rgba(var(--dark-main),0.05 )
+            border-radius: 5px
+        .schedule-row
+            padding: 5px 0
+            h3
+                font-size: 1.5rem
+                padding: 3px
+            .schedule-item
+                font-size: 1.2rem
+                // background-color: rgba(var(--red), 1)
+                background-color: white
+                box-shadow: 0 0 3px rgba(0,0,0,0.5)
+                margin: 5px 
+                width: 70px
+                padding: 10px 12px
+                color: black
+                transition: all 0.3s
+                &:hover
+                    background-color: rgba(var(--red),1 )
+                    color: white
+                &.true                
+                    color: black
+                    background-color: rgba(var(--darkest), 0.1)
+                    cursor: default
+        .arrows
+            text-align: center
+            .fas
+                font-size: 3rem
+                padding: 10px 0
+                margin: 0 10px
+                cursor: pointer
+                transition: color 0.3s
+                color: rgba(var(--dark-main), 0.7 )
+                &:hover
+                    color: rgba(var(--dardark-mainkest),0.5 )
