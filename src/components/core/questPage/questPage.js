@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getQuest } from '../../services/rest'
 import Error from '../errorBoundries/error'
 import Base from '../base/base'
+import Reviews from '../reviews/reviews'
 import './questPage.sass'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -31,6 +32,9 @@ const QuestPage = ({ match, contacts }) => {
                 {quest &&
                     <BookingPart afterFunc={afterFunc} quest={quest} />
                 }
+                {quest &&
+                    <Reviews id={quest.id} />
+                }
             </Error>
         </Base>
     )
@@ -38,6 +42,11 @@ const QuestPage = ({ match, contacts }) => {
 
 const QuestPart = ({ quest, contacts }) => {
 
+    useEffect(() => {
+        document.title = (quest['name'])
+        return (() => document.title = 'Квесты в Новосибирске "ВЫХОД')
+    },
+        [])
 
     const { name, description, length, people, extra_price, age, images } = quest
     const { address, phone, rules } = contacts
@@ -134,18 +143,25 @@ const BookingPart = ({ quest, afterFunc }) => {
     const [modalData, setModalData] = useState(null)
 
     useEffect(() => {
-        document.addEventListener('mousedown', (e) => {
-            if (e.target.classList.contains('overlay-booking')) {
-                setShowModal(false)
-                document.body.style.overflow = 'visible'
-            }
-        })
+        document.addEventListener('mousedown', modalListener)
+        return (() => document.removeEventListener('mousedown', modalListener))
     }, [])
+
+    const closeModal = () => {
+        setShowModal(false)
+        document.body.style.overflow = 'visible'
+    }
+
+    const modalListener = (e) => {
+        if (e.target.classList.contains('overlay-booking')) {
+            closeModal()
+        }
+    }
 
     const changeDate = (plus) => {
         const today = new Date()
         if (plus) {
-            if (showDate < new Date(today.getTime() + 1000 * 60 * 60 * 24 * 15)) {
+            if (showDate < new Date(today.getTime() + 1000 * 60 * 60 * 24 * 21)) {
                 setDate(prev => new Date(prev.getTime() + 1000 * 60 * 60 * 24 * 5))
             }
         }
@@ -204,7 +220,7 @@ const BookingPart = ({ quest, afterFunc }) => {
     return (
         <section id="booking">
 
-            {showModal && modalData && <BookingModal afterFunc={afterFunc} quest={modalData} />}
+            {showModal && modalData && <BookingModal closeFunc={closeModal} afterFunc={afterFunc} quest={modalData} />}
             <div className="container quest-page">
                 <h2>Бронировать</h2>
                 <div className="booking">

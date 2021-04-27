@@ -32,7 +32,6 @@ const Navbar = ({ contacts }) => {
 
     const togglePhone = (e) => {
         if (!isMobile.any()) {
-            e.preventDefault()
             setShowPhone(prev => !prev)
         }
     }
@@ -51,8 +50,8 @@ const Navbar = ({ contacts }) => {
             <div className="container">
                 <Link className='nav-logo' to={'/'}> <img src={`${process.env.PUBLIC_URL}/img/logo.png`} alt="выХод" /> </Link>
                 <ul className={`contacts ${mobileMenuClass}`}>
-                    {showPhone && <li><p>{phone}</p></li>}
-                    <li><a className='a-btn a-btn-white' onClick={togglePhone} href={`tel:${phone}`}><i className="fas fa-phone-square"></i></a></li>
+                    {showPhone && <li><a href={`tel:${phone}`}>{phone}</a></li>}
+                    <li className='a-btn a-btn-white' onClick={togglePhone} ><i className="fas fa-phone-square"></i></li>
                     <li><a className='a-btn a-btn-white' href={instagram} target='blank'><i className="fab fa-instagram"></i></a></li>
                     <li><a className='a-btn a-btn-white' href={vkontakte} target='blank'><i className="fab fa-vk"></i></a></li>
                 </ul>

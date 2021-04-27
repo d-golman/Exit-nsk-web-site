@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { isMobile } from '../../services/services'
-import Error from '../errorBoundries/error'
-import BookingModal from '../bookingModal/bookingModal'
+import { isMobile } from '../../../services/services'
+import Error from '../../errorBoundries/error'
+import BookingModal from '../../bookingModal/bookingModal'
 import './booking.sass'
 
 
 
 function Booking({ quests, afterFunc }) {
-
-
-
-
-
 
     return (
         <Error>
@@ -29,19 +24,26 @@ function Booking({ quests, afterFunc }) {
 const Schedule = ({ quests, afterFunc }) => {
     const times = {}
 
-
     const [date, setDate] = useState(new Date().toISOString().substring(0, 10))
     const [showModal, setShowModal] = useState(false)
     const [modalData, setModalData] = useState(null)
 
     useEffect(() => {
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('overlay-booking')) {
-                setShowModal(false)
-                document.body.style.overflow = 'visible'
-            }
-        })
+        document.addEventListener('mousedown', modalListener)
+        return (() => document.removeEventListener('mousedown', modalListener))
     }, [])
+
+    const closeModal = () => {
+        setShowModal(false)
+        document.body.style.overflow = 'visible'
+    }
+
+    const modalListener = (e) => {
+        if (e.target.classList.contains('overlay-booking')) {
+            closeModal()
+        }
+    }
+
 
     quests.forEach(quest => {
         times[`${quest.id}`] = {
@@ -99,7 +101,7 @@ const Schedule = ({ quests, afterFunc }) => {
     return (
 
         <div className="booking">
-            {showModal && modalData && <BookingModal afterFunc={afterFunc} quest={modalData} />}
+            {showModal && modalData && <BookingModal closeFunc={closeModal} afterFunc={afterFunc} quest={modalData} />}
 
             <input className='date-input'
                 type="date" name="date" id="date"

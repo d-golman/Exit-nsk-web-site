@@ -17,12 +17,12 @@
             h1
                 padding: 10px 0
                 text-align: left
-                color: black
+                color: rgba(var(--dark-main),1)
                 font-weight: 900
                 font-size: 3rem
             .back
                 padding-right: 15px 
-                color: black
+                color: rgba(var(--dark-main),1)
                 font-size: 3rem
             @media screen and ( max-width: 700px )
                 h1
@@ -44,10 +44,10 @@
             min-height: 700px
             max-height: 700px
             object-fit: cover
-            object-position: center    
+            object-position: center                    
         &-info
             position: absolute        
-            background: rgba(var(--dark-main),0.7)
+            background: rgba(var(--darkest),0.6)
             width: 100%
             height: auto
             bottom: 0
@@ -65,7 +65,7 @@
                         display: block
                         padding-bottom: 10px
                     p,a
-                        font-size: 1.2rem
+                        font-size: 1.3rem
                 a,p,i
                     color: white
                     text-decoration: none
@@ -110,9 +110,9 @@
                 font-size: 1.8rem
                 padding: 10px 0
             img
-                height: 300px
+                min-height: 400px
     &-about
-        background: rgba(var(--dark-main),0.95)
+        background: rgba(var(--blue),0.95)
         color: white
         padding: 20px 15px
         .container
@@ -146,6 +146,6 @@
 #booking
     .container.quest-page
         max-width: 1020px
-        padding: 30px
+        padding: 0 30px
         &>h2
             font-size: 2rem

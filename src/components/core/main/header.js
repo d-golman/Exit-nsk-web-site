@@ -9,7 +9,7 @@ const Header = () => {
     }
 
     return (
-        <section className="main-header">
+        <header className="main-header">
             <div className="background" />
             <div className="header-data">
                 <h1>ВЫ<span>Х</span>ОД</h1>
@@ -29,7 +29,7 @@ const Header = () => {
                     <p>Бронирование</p>
                 </div>
             </div>
-        </section>
+        </header>
     )
 }
 

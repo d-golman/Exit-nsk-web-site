@@ -5,7 +5,7 @@
     z-index: 10
     transition: background-color 0.5s
     &.darken
-        background-color: rgba(var(--dark-main), 0.85)
+        background-color: rgba(var(--blue), 0.85)
     .container
         width: 100%
         display: flex 
@@ -18,11 +18,13 @@
             display: flex
             flex-direction: row
             list-style: none
-            a,p
-                color: white
+            li
                 font-size: 2.6rem
                 line-height: 2.6rem
                 padding-left: 30px
+            a
+                text-decoration: none
+                color: white
             p
                 animation: slidein 0.3s
                 @keyframes slidein 

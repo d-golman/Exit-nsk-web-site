@@ -3,7 +3,7 @@ import { postOrder } from '../../services/rest'
 import Error from '../errorBoundries/error'
 import './bookingModal.sass'
 
-const BookingModal = ({ quest, afterFunc }) => {
+const BookingModal = ({ quest, afterFunc, closeFunc }) => {
     const { id, name, price, date, time } = quest
 
     const questData = {
@@ -25,8 +25,11 @@ const BookingModal = ({ quest, afterFunc }) => {
             .then(res => {
                 setMessage(res.message)
                 afterFunc()
+                setTimeout(closeFunc, 7000)
             })
-            .catch(res => console.log(res))
+            .catch(res =>
+                setMessage(res)
+            )
     }
 
     const changeData = (e) => {
@@ -47,14 +50,18 @@ const BookingModal = ({ quest, afterFunc }) => {
                     <p>Игра состоится {new Date(date).toLocaleDateString("ru-RU", options)} в {time}</p>
                     <p>Цена {price} руб.</p>
                     <form onInput={changeData} onSubmit={submit} >
-                        <input type="name" name="name" placeholder='Имя' required />
-                        <input type="tel" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" placeholder='Номер телефона' required />
-                        <input type="text" name="comment" placeholder='Комментарий' />
-                        <input className='btn' type="submit" value="Забронировать" />
-                        <div className="checkbox">
-                            <input type="checkbox" defaultChecked required /><p>Я соглашаюсь с правилами и даю согласие на обработку персональных данных</p>
-                        </div>
-                        {message && <p>{message}</p>}
+                        {!message ?
+                            <>
+                                <input type="name" name="name" placeholder='Имя' required />
+                                <input type="tel" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" placeholder='Номер телефона' required />
+                                <input type="text" name="comment" placeholder='Комментарий' />
+                                <input className='btn' type="submit" value="Забронировать" />
+                                <div className="checkbox">
+                                    <input type="checkbox" defaultChecked required /><p>Я соглашаюсь с правилами и даю согласие на обработку персональных данных</p>
+                                </div>
+                            </>
+                            :
+                            <h1>{message}</h1>}
                     </form>
                 </div>
             </div>

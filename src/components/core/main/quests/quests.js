@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Error from '../errorBoundries/error'
+import Error from '../../errorBoundries/error'
 import './quests.sass'
 
 const Quests = ({ quests, contacts }) => {

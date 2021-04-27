@@ -16,6 +16,17 @@ export const getContacts = () => {
         .then(res => res.json())
 }
 
+export const getReviews = (id) => {
+    if (!id) {
+        return fetch(`${API}/reviews`)
+            .then(res => res.json())
+    } else {
+        return fetch(`${API}/reviews/${id}`)
+            .then(res => res.json())
+    }
+
+}
+
 export const postOrder = (data) => {
     const formData = new FormData()
     for (const name in data) {

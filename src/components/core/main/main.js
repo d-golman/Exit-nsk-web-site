@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import Base from '../base/base'
-import Booking from '../booking/booking'
-import Contacts from '../contacts/contacts'
-import Quests from '../quests/quests'
+import Booking from './booking/booking'
+import Contacts from './contacts/contacts'
+import Reviews from '../reviews/reviews'
+import Quests from './quests/quests'
 import Header from './header'
+import About from './about/about'
 import { loadQuests } from '../../../redux/actions'
 import { getQuests } from '../../services/rest'
 import { connect } from 'react-redux'
@@ -25,9 +27,11 @@ const Main = ({ loadQuests }) => {
     return (
         <Base>
             <Header />
+            <About />
             <Error>
                 <Quests />
                 <Booking afterFunc={afterFunc} />
+                <Reviews />
             </Error>
             <Contacts />
         </Base>
