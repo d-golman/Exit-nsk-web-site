@@ -2,4 +2,4 @@
 
 Веб-сайт выполнен в архитекруре SPA на ReactJS
 
-<a href="exitnsk.ru">Ссылка на сайт</a>
+<a href="https://exitnsk.ru/">Ссылка на сайт</a>
