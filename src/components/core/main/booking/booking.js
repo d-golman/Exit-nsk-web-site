@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { isMobile } from '../../../services/services'
-import Error from '../../errorBoundries/error'
+import Error from '../../../errorBoundries/error'
 import BookingModal from '../../bookingModal/bookingModal'
 import './booking.sass'
 

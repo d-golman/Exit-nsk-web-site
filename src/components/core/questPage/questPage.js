@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getQuest } from '../../services/rest'
-import Error from '../errorBoundries/error'
+import Particles from '../../services/Particles'
+import Error from '../../errorBoundries/error'
 import Base from '../base/base'
 import Reviews from '../reviews/reviews'
 import './questPage.sass'
@@ -8,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { isMobile } from '../../services/services'
 import BookingModal from '../bookingModal/bookingModal'
+import ParticlesComponent from '../../particles/particlesComponent'
 const QuestPage = ({ match, contacts }) => {
 
     const id = match.params.id
@@ -26,6 +28,8 @@ const QuestPage = ({ match, contacts }) => {
     return (
         <Base>
             <Error>
+
+                <ParticlesComponent />
                 {quest &&
                     <QuestPart quest={quest} contacts={contacts} />
                 }
@@ -82,30 +86,38 @@ const QuestPart = ({ quest, contacts }) => {
     return (
         <div className="quest">
             <div className="quest-header">
-                <div className="quest-header-name">
+                {/* <div className="quest-header-name">
                     <h1>{name}</h1>
                     <Link className='back a-btn' to='/'><i className="fas fa-chevron-circle-left"></i></Link>
-                </div>
+                </div> */}
                 <div className="quest-header-info">
                     <div className="container">
-                        <div className="age">
-                            <p className='icon'>{age}+</p>
-                            <p>Возраст</p>
+                        <div className="name">
+                            <h1>{name}</h1>
                         </div>
-                        <div className="people">
-                            <div>
-                                {peopleRender(people[0], 'man man-white')}
-                                {peopleRender(people[1] - people[0], 'man man-grey')}
+                        <div className="properties">
+                            <div className="age">
+                                <p className='icon'>{age}+</p>
+                                <p>Возраст</p>
                             </div>
-                            <p>{people[0]} - {people[1]} человека</p>
-                        </div>
-                        <div className="length">
-                            <i className="far fa-clock icon"></i>
-                            <p>{length} мин</p>
-                        </div>
-                        <div className='book'>
-                            <a href="#booking"><i className="far fa-calendar-check a-btn a-btn-white icon"></i></a>
-                            <p>Бронировать</p>
+                            <div className="people">
+                                <div>
+                                    {/* {peopleRender(people[0], 'man man-white')}
+                                    {peopleRender(people[1] - people[0], 'man man-grey')} */}
+                                    <i className="man far fa-user"></i>
+                                </div>
+                                <p>{people[0]} - {people[1]} игрока</p>
+                            </div>
+                            <div className="length">
+                                <i className="far fa-clock icon"></i>
+                                <p>{length} мин</p>
+                            </div>
+                            <div className='book'>
+                                <a href="#booking">
+
+                                    <p className='btn btn-red'><i className="far fa-edit"></i>Записаться на квест</p></a>
+                                <Link className='btn btn-blue' to='/'><i className="far fa-arrow-alt-circle-left"></i>Выбрать другой</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,18 +129,18 @@ const QuestPart = ({ quest, contacts }) => {
                         <h3 onClick={() => setShowDescription(true)} className={showDescription ? 'toggle active' : 'toggle'}>Описание</h3>
                         <h3 onClick={() => setShowDescription(false)} className={!showDescription ? 'toggle active' : 'toggle'}>Правила</h3>
                         {showDescription ?
-                            <p>{description}</p>
+                            <p dangerouslySetInnerHTML={{ __html: description }} ></p>
                             :
-                            <p>{rules}</p>
+                            <p dangerouslySetInnerHTML={{ __html: rules }} ></p>
                         }
                         {people[2] !== 0 &&
-                            <p><br />Доплата за {range(people[1] + 1, people[1] + people[2], 1)} человека - {extra_price} рублей с человека.</p>}
+                            <p><br />Доплата за {people[1] + 1} - {people[1] + people[2]} игрока - {extra_price} рублей с человека.</p>}
 
                     </div>
                     <div className="contacts">
                         <h3>Контакты</h3>
                         <p className="adress">{address}</p>
-                        <p className="phone">{phone}</p>
+                        <a href={`tel:${phone}`} className="phone">{phone}</a>
                     </div>
                 </div>
             </div>
@@ -206,7 +218,7 @@ const BookingPart = ({ quest, afterFunc }) => {
 
     for (let date in times) {
         if (dates.some(element => element === date)) {
-            const options = { month: 'long', day: 'numeric' }
+            const options = { month: 'long', day: 'numeric', weekday: 'long' }
             schedule.push(
                 <div key={date} className="schedule-row">
                     <h3>{new Date(date).toLocaleDateString("ru-RU", options)}</h3>
@@ -219,7 +231,6 @@ const BookingPart = ({ quest, afterFunc }) => {
 
     return (
         <section id="booking">
-
             {showModal && modalData && <BookingModal closeFunc={closeModal} afterFunc={afterFunc} quest={modalData} />}
             <div className="container quest-page">
                 <h2>Бронировать</h2>

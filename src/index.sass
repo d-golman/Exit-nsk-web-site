@@ -1,6 +1,7 @@
 $dark-main: 42, 42, 42
 $red: 215, 95, 46
-$blue: 34, 119, 184
+// $blue: 34, 119, 184
+$blue: 23, 74, 122
 $darkest: 0 ,0 ,0
 
 \:root
@@ -22,6 +23,8 @@ body
 	font-family: 'Open Sans Condensed', sans-serif
 	-webkit-font-smoothing: antialiased
 	-moz-osx-font-smoothing: grayscale
+	position: relative
+
 
 .container
 	max-width: 1600px
@@ -52,6 +55,16 @@ body
 		color: white
 		&:hover
 			background: #333	
+	&-blue
+		background: rgba(var(--blue),1)
+		color: white
+		&:hover
+			background: rgba(var(--blue),0.7)	
+	&-red
+		background: rgba(var(--red),1)
+		color: white
+		&:hover
+			background: rgba(var(--red),0.8)	
 
 .a-btn
 	text-decoration: none
@@ -65,3 +78,14 @@ body
 .error
 	text-align:  center
 	height: 100%
+
+.background
+	position: sticky
+	top: 0
+	left: 0
+	display: block
+	z-index: -1
+	opacity: 0.5
+	width: 100%
+	height: auto !important
+	

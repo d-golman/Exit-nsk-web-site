@@ -7,7 +7,7 @@ const Header = () => {
             document.querySelector(id).offsetTop - 100
         )
     }
-
+    return (<></>)
     return (
         <header className="main-header">
             <div className="background" />

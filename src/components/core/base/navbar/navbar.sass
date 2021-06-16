@@ -1,23 +1,36 @@
 .navbar
-    position: fixed
+    position: absolute
+    top: 0
     width: 100%
     margin: auto
     z-index: 10
     transition: background-color 0.5s
     &.darken
-        background-color: rgba(var(--blue), 0.85)
+        background: linear-gradient(90deg,rgba(var(--blue),1),rgba(var(--blue),0.85) 30%,rgba(var(--blue),1))
     .container
         width: 100%
         display: flex 
         flex-direction: row
         justify-content: space-between
         align-items: center
-        padding: 20px       
+        padding: 10px       
         position: relative 
         .contacts
+            width: 800px
             display: flex
             flex-direction: row
+            flex-wrap: wrap
             list-style: none
+            justify-content: space-between
+
+            .links-1
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+            .links-2
+                display: flex
+                flex-direction: row
+                justify-content: space-between
             li
                 font-size: 2.6rem
                 line-height: 2.6rem
@@ -33,8 +46,8 @@
                     to 
                         opacity: 1
         .mobile-menu
-            height: 35px
-            width: 35px
+            height: 25px
+            width: 25px
             cursor: pointer
             position: relative
             display: none
@@ -45,25 +58,33 @@
                 &::after
                     content: ''
                     height: 3px
-                    width: 35px
+                    width: 25px
                     position: absolute
-                    top: 14px
+                    top: 11px
                     background: white
                 &::before
                     content: ''
                     height: 3px
-                    width: 35px
+                    width: 25px
                     position: absolute
-                    top: 28px
+                    top: 22px
                     background: white
 
-        @media screen and ( max-width: 500px )
+        @media screen and ( max-width: 900px )
+            padding: 14px 20px 
+            .links-1
+                justify-content: flex-end !important
+            .links-2
+                justify-content: flex-end !important
             .nav-logo
                 display: none
             .mobile-menu
                 display: block
-            .contacts                
-                opacity: 0
+            .contacts           
+                li
+                    font-size: 2rem     
+                    line-height: 2rem
+                display: none
                 transition: opacity 0.2s
                 &.shown
-                    opacity: 1
+                    display: block

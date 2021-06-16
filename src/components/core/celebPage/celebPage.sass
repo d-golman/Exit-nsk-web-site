@@ -1,0 +1,140 @@
+.celebration
+    &-header
+        // flex: 1
+        // height: auto
+        padding-top: 75px
+        position: relative
+        &-name
+            width: 100%
+            height: auto
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: space-between
+            padding: 0 15px
+            max-width: 980px
+            margin: auto
+            h1
+                padding: 10px 0
+                text-align: left
+                color: rgba(var(--dark-main),1)
+                font-weight: 900
+                font-size: 3rem
+            .back
+                padding-right: 15px 
+                color: rgba(var(--dark-main),1)
+                font-size: 3rem
+            @media screen and ( max-width: 700px )
+                h1
+                    max-width: 85%
+            @media screen and ( max-width: 500px )
+                h1
+                    text-align: left
+                .back
+                    top: 5%
+                    font-size: 2.5rem
+                    padding-right: 18px
+            @media screen and ( max-width: 350px )
+                h1
+                    max-width: 80%
+                    
+        img
+            width: 100%
+            z-index: -5
+            min-height: 700px
+            max-height: 700px
+            object-fit: cover
+            object-position: center                    
+        &-info
+            position: absolute        
+            background: linear-gradient(rgba(var(--darkest),0), rgba(var(--darkest),0.6), rgba(var(--darkest),0.8))
+            width: 100%
+            height: auto
+            bottom: 0
+            padding-bottom: 20px
+            padding-top: 140px
+            .container
+                max-width: 1000px
+                padding: 0 25px
+                .name
+                    padding: 5px 0
+                    h1
+                        padding: 10px 0
+                        text-align: left
+                        color: white
+                        font-weight: 900
+                        font-size: 3rem
+
+                @media screen and ( max-width: 550px  )
+                    .name
+                        padding: 0 10px
+                        h1
+                            font-size: 2.45rem
+
+        @media screen and ( max-width: 900px  )
+            padding-top: calc(2rem + 20px )
+            h1
+                font-size: 1.8rem
+                padding: 10px 0
+            img
+                min-height: calc(100vh - 2rem - 20px)
+
+    &-about
+        background: rgba(var(--blue),0.95)
+        background: linear-gradient(90deg,rgba(var(--blue),1),rgba(var(--blue),0.85) 30%,rgba(var(--blue),1))
+        color: white
+        padding: 20px 15px
+        .container
+            max-width: 1000px     
+            h3
+                font-size: 2rem
+                padding: 1rem 0
+            p,a
+                font-size: 1.4rem
+                white-space: pre-wrap   
+                color: white   
+            .flex-block
+                display: flex
+                flex-direction: row
+                justify-content: space-between    
+                flex-wrap: wrap
+                &>*:nth-child(1n)
+                    padding: 20px        
+                .description
+                    flex: 1
+                .contacts
+                    width: 240px       
+                ul
+                    margin-left: 20px
+
+                @media screen and ( max-width: 800px  )
+                    flex-direction: column
+            .events
+                padding: 0 20px
+                &-event                    
+                    padding: 5px 0 
+                    h4
+                        font-size: 1.6rem
+
+
+.celebration-booking
+    padding: 30px 20px
+    text-align: center
+    margin: 0 auto
+    h3
+        font-size: 2rem
+    &-form
+        margin-top: 20px
+        display: flex
+        flex-direction: column
+        max-width: 800px
+        &>*
+            margin: 10px 0
+            padding: 7px
+            border: 1px solid #999
+            border-radius: 5px
+            font-size: 18px
+            &[type="submit"]
+                color: white
+                background: rgba(var(--red), 1 )
+                cursor: pointer

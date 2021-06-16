@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { postOrder } from '../../services/rest'
-import Error from '../errorBoundries/error'
+import Error from '../../errorBoundries/error'
 import './bookingModal.sass'
 
 const BookingModal = ({ quest, afterFunc, closeFunc }) => {

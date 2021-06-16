@@ -1,8 +1,8 @@
 .quest    
     &-header
-        flex: 1
-        height: auto
-        padding-top: 95px
+        // flex: 1
+        // height: auto
+        padding-top: 75px
         position: relative
         &-name
             width: 100%
@@ -47,72 +47,101 @@
             object-position: center                    
         &-info
             position: absolute        
-            background: rgba(var(--darkest),0.6)
+            background: linear-gradient(rgba(var(--darkest),0), rgba(var(--darkest),0.6), rgba(var(--darkest),0.8))
             width: 100%
             height: auto
             bottom: 0
-            padding: 50px 0
+            padding-bottom: 20px
+            padding-top: 140px
             .container
                 max-width: 1000px
                 padding: 0 25px
-                display: flex
-                justify-content: space-between
-                align-items: center
-                flex-direction: row
-                text-align: center            
-                &>*:nth-child(1n)
-                    &>*:first-child
-                        display: block
-                        padding-bottom: 10px
-                    p,a
-                        font-size: 1.3rem
-                a,p,i
-                    color: white
-                    text-decoration: none
-                .icon
-                    font-size: 2.5rem !important
-                    line-height: 2.5rem
-                .people
-                    span
+                .name
+                    padding: 5px 0
+                    h1
+                        padding: 10px 0
+                        text-align: left
                         color: white
-                        font-size: 1.2rem
-                    .man
-                        font-size: 2rem
-                        padding: 5px 3px
-                        &-white
-                            opacity: 1
-                        &-grey
-                            opacity: 0.5
-                .book
-                    i
-                        color: rgba(var(--red),1) !important
-                @media screen and ( max-width: 400px )
+                        font-weight: 900
+                        font-size: 3rem
+                .properties
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    flex-direction: row
+                    text-align: center       
+                    flex-wrap: wrap     
                     &>*:nth-child(1n)
                         &>*:first-child
                             display: block
                             padding-bottom: 10px
                         p,a
-                            font-size: 0.9rem
+                            font-size: 1.3rem
                     a,p,i
                         color: white
                         text-decoration: none
                     .icon
-                        font-size: 2rem !important
-                        line-height: 2rem
+                        font-size: 2.5rem !important
+                        line-height: 2.5rem
                     .people
+                        span
+                            color: white
+                            font-size: 1.2rem
                         .man
-                            font-size: 1.5rem
+                            font-size: 2rem
+                            padding: 5px 3px
+                    .book
+                        max-width: 210px
+                        width: 100%
+                        .btn
+                            width: 100%
+                            margin: 0
+                            padding: 10px 15px
+                            padding-left: 50px
+                            position: relative
+                            i
+                                position: absolute
+                                top: 32%
+                                left: 15px
+                                padding-right: 10px
+                    
+                    @media screen and ( max-width: 400px )
+                        &>*:nth-child(1n)
+                            &>*:first-child
+                                display: block
+                                padding-bottom: 10px
+                            p,a
+                                font-size: 1rem
+                        a,p,i
+                            color: white
+                            text-decoration: none
+                        .icon
+                            font-size: 2rem !important
+                            line-height: 2rem
+                        .people
+                            .man
+                                font-size: 1.5rem
+                @media screen and ( max-width: 550px  )
+                    .name
+                        padding: 0 10px
+                        h1
+                            font-size: 2.45rem
+                    .properties
+                        .book
+                            margin-top: 20px
+                            max-width: 500px
 
                     
-        @media screen and ( max-width: 500px  )
-            padding-top: 80px
+        @media screen and ( max-width: 900px  )
+            padding-top: calc(2rem + 20px )
             h1
                 font-size: 1.8rem
                 padding: 10px 0
             img
-                min-height: 400px
+                min-height: calc(100vh - 2rem - 20px)
     &-about
         background: rgba(var(--blue),0.95)
+        background: linear-gradient(70deg,rgba(var(--blue),1),rgba(var(--blue),0.85) 30%,rgba(var(--blue),1))
         color: white
         padding: 20px 15px
         .container
@@ -129,7 +158,7 @@
                 width: 240px
             .toggle
                 display: inline
-                padding-right: 15px
+                padding-right: 35px
                 color: rgba(255,255,255, 0.6 )
                 cursor: pointer
                 &.active
@@ -137,15 +166,18 @@
             h3
                 font-size: 2rem
                 padding-bottom: 1rem
-            p
+            p,a
                 font-size: 1.4rem
-                white-space: pre-wrap      
+                white-space: pre-wrap   
+                color: white   
             @media screen and ( max-width: 800px  )
                 flex-direction: column
 
 #booking
+    z-index: 1
     .container.quest-page
         max-width: 1020px
+        width: fit-content
         padding: 0 30px
         &>h2
             font-size: 2rem

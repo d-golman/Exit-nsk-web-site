@@ -1,19 +1,28 @@
 #about
-    padding-bottom: 20px
+    margin-top: 100px
+    padding: 40px 20px
     .container
         max-width: 1000px
-        padding: 20px
         text-align: justify
         color: rgba(var(--dark-main),1)
         h2
-            font-size: 2.3rem
+            font-size: 5rem
             text-align: center
             margin-bottom: 10px
-        p
-            font-size: 1.4rem
-            padding: 7px 0
-            a
-                text-decoration: none
-            span
-                color: rgba(var(--blue),1)
-                cursor: pointer
+            color: #333
+        .aboutText      
+            max-height: 0
+            overflow: hidden
+            transition: max-height 0.2s ease-out
+            p
+                font-size: 1.4rem
+                padding: 7px 0
+                a
+                    text-decoration: none
+                span
+                    color: rgba(var(--blue),1)
+                    cursor: pointer
+
+        .btn
+            display: block
+            margin: 20px auto

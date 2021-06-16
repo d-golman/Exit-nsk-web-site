@@ -1,37 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Base from '../base/base'
 import Booking from './booking/booking'
+import Celebrations from './celebrations/celebrations'
 import Contacts from './contacts/contacts'
 import Reviews from '../reviews/reviews'
 import Quests from './quests/quests'
+import Numscroll from './numscroll/numscroll'
 import Header from './header'
 import About from './about/about'
-import { loadQuests } from '../../../redux/actions'
-import { getQuests } from '../../services/rest'
+import { loadQuests, loadCelebs } from '../../../redux/actions'
+import { getQuests, getCelebs } from '../../services/rest'
 import { connect } from 'react-redux'
 import './main.sass'
-import Error from '../errorBoundries/error'
-const Main = ({ loadQuests }) => {
+import Error from '../../errorBoundries/error'
+import ParticlesComponent from '../../particles/particlesComponent'
+
+const Main = ({ loadQuests, loadCelebs }) => {
 
     useEffect(() => {
         getQuests()
             .then(res => loadQuests(res))
-    }, [loadQuests])
+        getCelebs()
+            .then(res => loadCelebs(res))
+    }, [loadQuests, loadCelebs])
 
-    const afterFunc = () => {
-        getQuests()
-            .then(res => loadQuests(res))
-    }
+    // const afterFunc = () => {
+    //     getQuests()
+    //         .then(res => loadQuests(res))
+    // }
+
+
 
 
     return (
         <Base>
+            <ParticlesComponent />
             <Header />
             <About />
             <Error>
                 <Quests />
-                <Booking afterFunc={afterFunc} />
+                <Celebrations />
+                {/* <Booking afterFunc={afterFunc} /> */}
                 <Reviews />
+                <Numscroll />
             </Error>
             <Contacts />
         </Base>
@@ -39,7 +50,8 @@ const Main = ({ loadQuests }) => {
 }
 
 const mapDispatchToProps = {
-    loadQuests
+    loadQuests,
+    loadCelebs
 }
 
 const mapStateToProps = () => ({

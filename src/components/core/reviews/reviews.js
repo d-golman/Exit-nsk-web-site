@@ -12,11 +12,24 @@ const Reviews = ({ id }) => {
             .then(res => setReviews(res))
     }, [id])
 
-    const reviewBlock = (index, item) => {
-        const { name_room, people_name, review } = item
-        return <div key={index} className="review-block">
-            <p className='review-block-name'>{people_name}</p>
-            <p className='review-block-quest'>Квест - {name_room}</p>
+    const ReviewBlock = ({ item }) => {
+        const { name_room, people_name, rating, image_review, review } = item
+        const stars = []
+        for (let i = 0; i < +rating; i++) {
+            stars.push(<i key={i + Math.random()} className="fas fa-star"></i>)
+        }
+        for (let i = 0; i < 5 - rating; i++) {
+            stars.push(<i key={i + Math.random()} className="far fa-star"></i>)
+        }
+        return <div className="review-block">
+            <div className='data'>
+                <img src={`${image_review}`} alt="" />
+                <div className='data-info'>
+                    <p className='review-block-name'>{people_name}</p>
+                    <p className='review-block-quest'>{name_room}</p>
+                    <p className='review-block-rating'>{stars}</p>
+                </div>
+            </div>
             <p className='review-block-review'>{review}</p>
         </div>
     }
@@ -29,7 +42,7 @@ const Reviews = ({ id }) => {
                 {reviews &&
                     <div className="reviews-blocks">
                         {reviews.slice(number, number + 3).map((item, index) => {
-                            return reviewBlock(index, item)
+                            return <ReviewBlock key={index} item={item} />
                         })
                         }
                     </div>}
